@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const formidable = require('express-formidable');
 const expressEjsLayout = require('express-ejs-layouts')
-const mongoose = require('mongoose');
 const PORT = process.env.PORT || 3000;
 const dotenv = require("dotenv")
 
@@ -19,11 +18,6 @@ app.use(expressEjsLayout);
 app.use('/', require('./routes'));
 app.use('/projects', require('./routes/projects'));
 app.use('/blogs', require('./routes/blogs'));
-
-mongoose.set("strictQuery", false);
-mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('Database Connected'))
-    .catch((err) => console.log(err));
 
 app.listen(PORT, () =>
     console.info(`App running on : http://localhost:${PORT}/`)
