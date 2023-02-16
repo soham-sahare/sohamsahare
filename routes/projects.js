@@ -5,8 +5,12 @@ router.get('/', (req, res) => {
     res.render('./projects/projects');
 })
 
-router.get('/single', (req, res) => {
-    res.render('./projects/single-project');
+router.get('/ia_management_system', (req, res) => {
+    res.render('./projects/ia_management_system');
+})
+
+router.get('/repository_system', (req, res) => {
+    res.render('./projects/repository_system');
 })
 
 module.exports = router; 
