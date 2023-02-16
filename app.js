@@ -5,8 +5,6 @@ const formidable = require('express-formidable');
 const expressEjsLayout = require('express-ejs-layouts')
 const mongoose = require('mongoose');
 
-var nodemailer = require('nodemailer');
-
 const PORT = process.env.PORT || 3000;
 
 const dotenv = require("dotenv")
