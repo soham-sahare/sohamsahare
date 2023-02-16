@@ -1,13 +1,11 @@
 const express = require('express');
 const app = express();
 const formidable = require('express-formidable');
-
 const expressEjsLayout = require('express-ejs-layouts')
 const mongoose = require('mongoose');
-
 const PORT = process.env.PORT || 3000;
-
 const dotenv = require("dotenv")
+
 dotenv.config()
 
 app.use(express.static('public'));
