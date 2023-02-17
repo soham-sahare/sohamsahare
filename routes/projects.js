@@ -17,4 +17,8 @@ router.get('/up_learn', (req, res) => {
     res.render('./projects/up_learn');
 })
 
+router.get('/voom', (req, res) => {
+    res.render('./projects/voom');
+})
+
 module.exports = router; 
