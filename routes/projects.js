@@ -13,4 +13,8 @@ router.get('/repository_system', (req, res) => {
     res.render('./projects/repository_system');
 })
 
+router.get('/up_learn', (req, res) => {
+    res.render('./projects/up_learn');
+})
+
 module.exports = router; 
