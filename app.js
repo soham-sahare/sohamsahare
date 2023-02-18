@@ -10,7 +10,7 @@ dotenv.config()
 app.use(express.static(__dirname + '/public'));
 app.use(formidable());
 
-app.set(express.static(__dirname + './views'));
+app.set('views', './views');
 app.set('view engine', 'ejs');
 app.use(expressEjsLayout);
 
