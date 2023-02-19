@@ -21,4 +21,8 @@ router.get('/voom', (req, res) => {
     res.render('./projects/voom');
 })
 
+router.get('/kooke_s_cafe', (req, res) => {
+    res.render('./projects/kooke_s_cafe');
+})
+
 module.exports = router; 
