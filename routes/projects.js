@@ -17,8 +17,8 @@ router.get('/up_learn', (req, res) => {
     res.render('./projects/up_learn');
 })
 
-router.get('/voom', (req, res) => {
-    res.render('./projects/voom');
+router.get('/voom_meet', (req, res) => {
+    res.render('./projects/voom_meet');
 })
 
 router.get('/kooke_s_cafe', (req, res) => {
