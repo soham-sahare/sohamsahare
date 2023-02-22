@@ -9,8 +9,8 @@ router.get('/ia_management_system', (req, res) => {
     res.render('./projects/ia_management_system');
 })
 
-router.get('/repository_system', (req, res) => {
-    res.render('./projects/repository_system');
+router.get('/v_repository', (req, res) => {
+    res.render('./projects/v_repository');
 })
 
 router.get('/up_learn', (req, res) => {
