@@ -30,8 +30,8 @@ router.get('/c_url', (req, res) => {
     res.render('./projects/project', new_data = data[5]);
 })
 
-router.get('/c_url', (req, res) => {
-    res.render('./projects/project', new_data = data[5]);
+router.get('/sorting_visualiser', (req, res) => {
+    res.render('./projects/project', new_data = data[6]);
 })
 
 module.exports = router; 
