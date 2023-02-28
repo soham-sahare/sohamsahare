@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 
 var nodemailer = require('nodemailer');
+const { Analytics } = require('@segment/analytics-node')
+
+const analytics = new Analytics({ writeKey: process.env.KEY })
 
 async function email_handler(name, email, message) {
     var transporter = await nodemailer.createTransport({
@@ -31,10 +34,22 @@ async function email_handler(name, email, message) {
 }
 
 router.get('/', (req, res) => {
+
+    analytics.track({
+        anonymousId: 'id',
+        event: 'Home Page Visited'
+    });
+
     res.render('index');
 })
 
 router.get('/contact', (req, res) => {
+
+    analytics.track({
+        anonymousId: 'id',
+        event: 'Contact Page Visited'
+    });
+
     res.render('contact');
 })
 
@@ -46,10 +61,26 @@ router.post('/contact', (req, res) => {
 
     email_handler(name, email, message)
 
+    analytics.track({
+        anonymousId: 'id',
+        event: 'Contact Page - Email sent',
+        properties: {
+            email: email,
+            name: name,
+            message: message,
+        }
+    });
+
     res.redirect("/contact")
 })
 
 router.get('/about', (req, res) => {
+
+    analytics.track({
+        anonymousId: 'id',
+        event: 'About Page Visited'
+    });
+
     res.render('about');
 })
 
