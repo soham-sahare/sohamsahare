@@ -1,226 +1,256 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <head>
+    <title>Contact - sohamsahare</title>
+    <%- include('partials/head') %>
+  </head>
+  <body>
+    <%- include('partials/loader') %>
+    <%- include('partials/navbar') %>
+    <%- include('partials/header') %>
+    
+    <main id="ss-mxd-page-content" class="ss-mxd-page-content inner-page-content">
+      <div class="ss-mxd-section ss-mxd-section-inner-headline padding-s-text-pre-form overflow-hidden">
+        <div class="ss-mxd-container grid-container">
+          <div class="ss-mxd-block loading-wrap">
+            <div class="container-fluid px-0">
+              <div class="row gx-0">
+                <div class="col-12 col-xl-2 ss-mxd-grid-item no-margin">
+                  <div class="ss-mxd-block__name name-inner-headline">
+                    <p class="ss-mxd-point-subtitle">
+                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill="currentColor" d="M19.6,9.6c0,0-3,0-4,0c-0.4,0-1.8-0.2-1.8-0.2c-0.6-0.1-1.1-0.2-1.6-0.6c-0.5-0.3-0.9-0.8-1.2-1.2
+                          c-0.3-0.4-0.4-0.9-0.5-1.4c0,0-0.1-1.1-0.2-1.5c-0.1-1.1,0-4.4,0-4.4C10.4,0.2,10.2,0,10,0S9.6,0.2,9.6,0.4c0,0,0.1,3.3,0,4.4
+                          c0,0.4-0.2,1.5-0.2,1.5C9.4,6.7,9.2,7.2,9,7.6C8.7,8.1,8.2,8.5,7.8,8.9c-0.5,0.3-1,0.5-1.6,0.6c0,0-1.2,0.1-1.7,0.2
+                          c-1,0.1-4.2,0-4.2,0C0.2,9.6,0,9.8,0,10c0,0.2,0.2,0.4,0.4,0.4c0,0,3.1-0.1,4.2,0c0.4,0,1.7,0.2,1.7,0.2c0.6,0.1,1.1,0.2,1.6,0.6
+                          c0.4,0.3,0.8,0.7,1.1,1.1c0.3,0.5,0.5,1,0.6,1.6c0,0,0.1,1.3,0.2,1.7c0,1,0,4.1,0,4.1c0,0.2,0.2,0.4,0.4,0.4s0.4-0.2,0.4-0.4
+                          c0,0,0-3.1,0-4.1c0-0.4,0.2-1.7,0.2-1.7c0.1-0.6,0.2-1.1,0.6-1.6c0.3-0.4,0.7-0.8,1.1-1.1c0.5-0.3,1-0.5,1.6-0.6
+                          c0,0,1.3-0.1,1.8-0.2c1,0,4,0,4,0c0.2,0,0.4-0.2,0.4-0.4C20,9.8,19.8,9.6,19.6,9.6L19.6,9.6z"/>
+                      </svg>
+                      <span>Contact</span>
+                    </p>
+                  </div>
+                </div>
+                <div class="col-12 col-xl-8 ss-mxd-grid-item no-margin">
+                  <div class="ss-mxd-block__content">
+                    <div class="ss-mxd-block__inner-headline loading__item">
+                      <h1 class="inner-headline__title">
+                        Let's talk<br>about your project!
+                      </h1>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                      <!-- <a class="btn btn-line-headline slide-right-up anim-no-delay" href="mailto:<%= (contact && contact.email) ? contact.email : 'me@sohamsahare.in' %>?subject=Thank%20you%20for%20your%20message!">
+                      <span class="btn-caption"><%= (contact && contact.email) ? contact.email : 'me@sohamsahare.in' %></span>
 
-        <!-- SEO -->
-        <meta name="description"
-            content="Hi, I’m Soham Sahare and I am web developer who loves to build things that live on the internet." />
-        <meta name="og:title" content="Soham Sahare" />
-        <meta name="og:description" content="Soham Sahare" />
-        <meta name="og:type" content="website" />
-        <meta name="og:image" content="https://sohamsahare.vercel.app/assets/images/favicon.png" />
-        <meta name="og:url" content="https://sohamsahare.vercel.app/" />
-        <meta name="image" property="og:image" content="https://sohamsahare.vercel.app/assets/images/favicon.png" />
+                      <i class="ph-bold ph-arrow-up-right"></i> -->
 
-        <!-- FAVICON -->
-        <link rel="shortcut icon" href="assets/images/favicon.png">
-
-        <!-- FONT -->
-        <link rel='dns-prefetch' href='http://fonts.googleapis.com/' />
-        <link rel='stylesheet'
-            href='https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&amp;display=swap'
-            type='text/css' />
-
-        <!-- DEFAULT CSS -->
-        <link rel='stylesheet' href='assets/css/helper.css' type='text/css' />
-
-        <!-- CUSTOM CSS -->
-        <link rel='stylesheet' href='assets/css/style-light.css' type='text/css' />
-        <link rel='stylesheet' href='assets/css/style.css' type='text/css' />
-        <link rel='stylesheet' href='assets/css/style-dark.css' type='text/css' />
-
-        <title>Contact - Soham Sahare</title>
-
-    </head>
-
-    <body
-        class="home page-template page-template-page-templates page-template-home-page page-template-page-templateshome-page-php page page-id-47 elementor-default elementor-kit-6">
-        <!-- < NAVIGATION WITH BACKGROUND COLOR NAVBAR >............................................ -->
-        <!-- removed navbar-toggleable-md because responsive issues. Find out why ..... -->
-        <!-- start page-wrapper -->
-        <!-- PRELOADER -->
-        <div class="preloader-bg"></div>
-        <div id="preloader">
-            <div id="preloader-status">
-                <div class="preloader-position loader"> <span></span> </div>
+                      
+                      </a>
+                      <p class="inner-headline__text t-large t-bright loading__item">Have questions? I have got the answers! <br>
+                        If you need more details, feel free to reach out!
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-        <!-- Cursor -->
-        <div class="cursor js-cursor"></div>
-        <!-- Menu -->
-        <nav class="sohamsahare-menu" id="sohamsahare-navbar-spy">
-            <div class="sohamsahare-menu-inner" id="sohamsahare-navbar">
-                <ul class="list-unstyled " id="mobile-menu-active">
-                    <li id="menu-item-93"
-                        class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home nav-item menu-item-93 active">
-                        <a title="Home" class=" nav-link" href="/">Home</a>
-                    </li>
-                    <li id="menu-item-94"
-                        class="menu-item menu-item-type-post_type menu-item-object-page nav-item menu-item-94"><a
-                            title="About" class=" nav-link" href="/about">About</a></li>
-
-                    <li id="menu-item-96"
-                        class="menu-item menu-item-type-post_type menu-item-object-page nav-item menu-item-96"><a
-                            title="Projects" class=" nav-link" href="/projects">Projects</a></li>
-                    <li id="menu-item-103"
-                        class="menu-item menu-item-type-post_type menu-item-object-page nav-item menu-item-103"><a
-                            title="Blog" class=" nav-link" href="/blogs">Blogs</a></li>
-                    <li id="menu-item-95"
-                        class="menu-item menu-item-type-post_type menu-item-object-page nav-item menu-item-95"><a
-                            title="Contact" class=" nav-link" href="/contact">Contact</a></li>
-                </ul>
-            </div>
-        </nav>
-        <!-- Header -->
-        <header class="sohamsahare-header">
-            <div class="container">
-                <div class="row align-items-center">
-                    <!-- Logo -->
-                    <div class="col-8 col-md-8">
-                        <div class="logo-wrap">
-                            <a href="/" class="logo">
-                                <h1 style="color: black">SOHAM</h1>
-                            </a>
+      </div>
+      <div class="ss-mxd-section ss-mxd-section-inner-form padding-default">
+        <div class="ss-mxd-container grid-container">
+          <div class="ss-mxd-block">
+            <div class="container-fluid px-0">
+              <div class="row gx-0">
+                <div class="col-12 col-xl-2 ss-mxd-grid-item no-margin"></div>
+                <div class="col-12 col-xl-8">
+                  <div class="ss-mxd-block__content contact">
+                    <div class="ss-mxd-block__inner-form loading__fade">
+                      <div class="form-container">
+                        <div class="form__reply centered text-center">
+                          <i class="ph-fill ph-smiley-wink reply__icon"></i>
+                          <p class="reply__title">Done!</p>
+                          <span class="reply__text">Thanks for your message. We'll get back as soon as possible.</span>
                         </div>
-                    </div>
-
-                    <!-- Menu Burger -->
-                    <div class="col-4 col-md-4 text-right sohamsahare-menu-burger-wrap"> <a href="#"
-                            class="sohamsahare-nav-toggle sohamsahare-js-nav-toggle"><i></i></a> </div>
-                </div>
-            </div>
-        </header>
-        <section class="contact section-padding" style="padding-top: 50px;">
-            <div class=" container">
-                <div class="row mb-45">
-                    <div class="col-md-12">
-                        <h6 class="wow" data-splitting>Get in touch</h6>
-                        <h1 class="wow" data-splitting>Contact Details.</h1>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 mb-45">
-                        <div class="item">
-                            <div class="wrap-block"> <span class="icon et-phone"></span>
-                                <div class="text-block">
-                                    <h5>Phone</h5>
-                                    <a href="https://wa.me/917756059960" target="_blank">
-                                        <p>+91 77 560 599 60</p>
-                                    </a>
-                                </div>
+                        <form class="form contact-form" id="contact-form">
+                          <div class="container-fluid p-0">
+                            <div class="row gx-0">
+                              <div class="col-12 col-md-6 ss-mxd-grid-item anim-uni-in-up">
+                                <input type="text" name="Name" placeholder="Your name*" required>
+                              </div>
+                              <div class="col-12 col-md-6 ss-mxd-grid-item anim-uni-in-up">
+                                <input type="email" name="E-mail" placeholder="Email*" required>
+                              </div>
+                              <div class="col-12 ss-mxd-grid-item anim-uni-in-up">
+                                <textarea name="Message" placeholder="A few words"></textarea>
+                              </div>
+                              <div class="col-12 ss-mxd-grid-item anim-uni-in-up">
+                                <button class="btn btn-anim btn-default btn-large btn-opposite slide-right-up" type="submit">
+                                <span class="btn-caption">Submit</span>
+                                <i class="ph-bold ph-arrow-up-right"></i>
+                                </button>
+                              </div>
                             </div>
-                        </div>
-                        <div class="item">
-                            <div class="wrap-block"> <span class="icon et-map-pin"></span>
-                                <div class="text-block">
-                                    <h5>Address</h5>
-                                    <p>Pune, Maharashtra, India</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="wrap-block"> <span class="icon et-notebook"></span>
-                                <div class="text-block">
-                                    <h5>E-Mail</h5>
-                                    <a href="mailto:sohamsahare123@gmail.com">
-                                        <p>sohamsahare123@gmail.com</p>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-5 offset-md-1">
-                        <h5>Get in touch!</h5>
-                        <form class="contact__form" action="/contact" method="POST">
-                            <input type="text" name="name" id="name"
-                                class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
-                                placeholder="Name *" />
-
-                            <input type="email" name="email" id="email"
-                                class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
-                                placeholder="Email Address *" />
-
-                            <!-- <input type="submit" value="Get in touch ->"> -->
-
-                            <textarea name="message" cols="10" rows="10" id="message"
-                                class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required" id="message"
-                                aria-required="true" aria-invalid="false"
-                                placeholder="How can we help you? Feel free to get in touch! *"></textarea>
-
-                            <div class="btn-wrap">
-                                <div class="btn-link">
-                                    <input type="submit" value="Get in touch ->"
-                                        class="wpcf7-form-control has-spinner " /><span
-                                        class="btn-block color1 animation-bounce"></span>
-                                </div>
-                            </div>
+                          </div>
                         </form>
+                      </div>
                     </div>
+                  </div>
                 </div>
+              </div>
             </div>
-        </section>
-        <!-- Maps -->
-        <section id="map">
-            <div class="full-width">
-                <div class="google-map">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d121058.92836645937!2d73.79292752101519!3d18.524766325366922!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf2e67461101%3A0x828d43bf9d9ee343!2sPune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1675065408017!5m2!1sen!2sin"
-                        width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="ss-mxd-section padding-mtext">
+        <div class="ss-mxd-container fullwidth-container">
+          <div class="ss-mxd-block">
+            <div class="marquee marquee-right--gsap muted-extra">
+              <div class="marquee__toright">
+                <div class="marquee__item one-line item-regular text">
+                  <p class="marquee__text">Connect</p>
+                  <div class="marquee__image">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="currentColor">
+                      <path fill="currentColor" d="M78.4,38.4c0,0-11.8,0-15.8,0c-1.6,0-4.8-0.2-7.1-0.8c-2.3-0.6-4.3-0.8-6.3-2.4c-2-1.2-3.5-3.2-4.7-4.8
+                        c-1.2-1.6-1.6-3.6-2-5.5c-0.3-1.5-0.7-4.3-0.8-5.9c-0.2-4.3,0-17.4,0-17.4C41.8,0.8,41,0,40.2,0s-1.6,0.8-1.6,1.6c0,0,0,13.1,0,17.4
+                        c0,1.6-0.6,4.3-0.8,5.9c-0.3,2-0.8,4-2,5.5c-1.2,2-2.8,3.6-4.7,4.8s-4,1.8-6.3,2.4c-1.9,0.5-4.7,0.6-6.7,0.8c-3.9,0.4-16.6,0-16.6,0
+                        C0.8,38.4,0,39.2,0,40c0,0.8,0.8,1.6,1.6,1.6c0,0,12.2,0,16.6,0c1.6,0,4.8,0.3,6.7,0.8c2.3,0.6,4.3,0.8,6.3,2.4
+                        c1.6,1.2,3.2,2.8,4.3,4.4c1.2,2,2.1,3.9,2.4,6.3c0.2,1.7,0.7,4.7,0.8,6.7c0.2,4,0,16.2,0,16.2c0,0.8,0.8,1.6,1.6,1.6
+                        s1.6-0.8,1.6-1.6c0,0,0-12.3,0-16.2c0-1.6,0.5-5.1,0.8-6.7c0.5-2.3,0.8-4.4,2.4-6.3c1.2-1.6,2.8-3.2,4.3-4.4c2-1.2,3.9-2,6.3-2.4
+                        c1.8-0.3,5.1-0.7,7.1-0.8c3.5-0.2,15.8,0,15.8,0c0.8,0,1.6-0.8,1.6-1.6C80,39.2,79.2,38.4,78.4,38.4C78.4,38.4,78.4,38.4,78.4,38.4z
+                        "/>
+                    </svg>
+                  </div>
                 </div>
+                <div class="marquee__item one-line item-regular text">
+                  <p class="marquee__text">Connect</p>
+                  <div class="marquee__image">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="currentColor">
+                      <path fill="currentColor" d="M78.4,38.4c0,0-11.8,0-15.8,0c-1.6,0-4.8-0.2-7.1-0.8c-2.3-0.6-4.3-0.8-6.3-2.4c-2-1.2-3.5-3.2-4.7-4.8
+                        c-1.2-1.6-1.6-3.6-2-5.5c-0.3-1.5-0.7-4.3-0.8-5.9c-0.2-4.3,0-17.4,0-17.4C41.8,0.8,41,0,40.2,0s-1.6,0.8-1.6,1.6c0,0,0,13.1,0,17.4
+                        c0,1.6-0.6,4.3-0.8,5.9c-0.3,2-0.8,4-2,5.5c-1.2,2-2.8,3.6-4.7,4.8s-4,1.8-6.3,2.4c-1.9,0.5-4.7,0.6-6.7,0.8c-3.9,0.4-16.6,0-16.6,0
+                        C0.8,38.4,0,39.2,0,40c0,0.8,0.8,1.6,1.6,1.6c0,0,12.2,0,16.6,0c1.6,0,4.8,0.3,6.7,0.8c2.3,0.6,4.3,0.8,6.3,2.4
+                        c1.6,1.2,3.2,2.8,4.3,4.4c1.2,2,2.1,3.9,2.4,6.3c0.2,1.7,0.7,4.7,0.8,6.7c0.2,4,0,16.2,0,16.2c0,0.8,0.8,1.6,1.6,1.6
+                        s1.6-0.8,1.6-1.6c0,0,0-12.3,0-16.2c0-1.6,0.5-5.1,0.8-6.7c0.5-2.3,0.8-4.4,2.4-6.3c1.2-1.6,2.8-3.2,4.3-4.4c2-1.2,3.9-2,6.3-2.4
+                        c1.8-0.3,5.1-0.7,7.1-0.8c3.5-0.2,15.8,0,15.8,0c0.8,0,1.6-0.8,1.6-1.6C80,39.2,79.2,38.4,78.4,38.4C78.4,38.4,78.4,38.4,78.4,38.4z
+                        "/>
+                    </svg>
+                  </div>
+                </div>
+                <div class="marquee__item one-line item-regular text">
+                  <p class="marquee__text">Connect</p>
+                  <div class="marquee__image">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="currentColor">
+                      <path fill="currentColor" d="M78.4,38.4c0,0-11.8,0-15.8,0c-1.6,0-4.8-0.2-7.1-0.8c-2.3-0.6-4.3-0.8-6.3-2.4c-2-1.2-3.5-3.2-4.7-4.8
+                        c-1.2-1.6-1.6-3.6-2-5.5c-0.3-1.5-0.7-4.3-0.8-5.9c-0.2-4.3,0-17.4,0-17.4C41.8,0.8,41,0,40.2,0s-1.6,0.8-1.6,1.6c0,0,0,13.1,0,17.4
+                        c0,1.6-0.6,4.3-0.8,5.9c-0.3,2-0.8,4-2,5.5c-1.2,2-2.8,3.6-4.7,4.8s-4,1.8-6.3,2.4c-1.9,0.5-4.7,0.6-6.7,0.8c-3.9,0.4-16.6,0-16.6,0
+                        C0.8,38.4,0,39.2,0,40c0,0.8,0.8,1.6,1.6,1.6c0,0,12.2,0,16.6,0c1.6,0,4.8,0.3,6.7,0.8c2.3,0.6,4.3,0.8,6.3,2.4
+                        c1.6,1.2,3.2,2.8,4.3,4.4c1.2,2,2.1,3.9,2.4,6.3c0.2,1.7,0.7,4.7,0.8,6.7c0.2,4,0,16.2,0,16.2c0,0.8,0.8,1.6,1.6,1.6
+                        s1.6-0.8,1.6-1.6c0,0,0-12.3,0-16.2c0-1.6,0.5-5.1,0.8-6.7c0.5-2.3,0.8-4.4,2.4-6.3c1.2-1.6,2.8-3.2,4.3-4.4c2-1.2,3.9-2,6.3-2.4
+                        c1.8-0.3,5.1-0.7,7.1-0.8c3.5-0.2,15.8,0,15.8,0c0.8,0,1.6-0.8,1.6-1.6C80,39.2,79.2,38.4,78.4,38.4C78.4,38.4,78.4,38.4,78.4,38.4z
+                        "/>
+                    </svg>
+                  </div>
+                </div>
+                <div class="marquee__item one-line item-regular text">
+                  <p class="marquee__text">Connect</p>
+                  <div class="marquee__image">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="currentColor">
+                      <path fill="currentColor" d="M78.4,38.4c0,0-11.8,0-15.8,0c-1.6,0-4.8-0.2-7.1-0.8c-2.3-0.6-4.3-0.8-6.3-2.4c-2-1.2-3.5-3.2-4.7-4.8
+                        c-1.2-1.6-1.6-3.6-2-5.5c-0.3-1.5-0.7-4.3-0.8-5.9c-0.2-4.3,0-17.4,0-17.4C41.8,0.8,41,0,40.2,0s-1.6,0.8-1.6,1.6c0,0,0,13.1,0,17.4
+                        c0,1.6-0.6,4.3-0.8,5.9c-0.3,2-0.8,4-2,5.5c-1.2,2-2.8,3.6-4.7,4.8s-4,1.8-6.3,2.4c-1.9,0.5-4.7,0.6-6.7,0.8c-3.9,0.4-16.6,0-16.6,0
+                        C0.8,38.4,0,39.2,0,40c0,0.8,0.8,1.6,1.6,1.6c0,0,12.2,0,16.6,0c1.6,0,4.8,0.3,6.7,0.8c2.3,0.6,4.3,0.8,6.3,2.4
+                        c1.6,1.2,3.2,2.8,4.3,4.4c1.2,2,2.1,3.9,2.4,6.3c0.2,1.7,0.7,4.7,0.8,6.7c0.2,4,0,16.2,0,16.2c0,0.8,0.8,1.6,1.6,1.6
+                        s1.6-0.8,1.6-1.6c0,0,0-12.3,0-16.2c0-1.6,0.5-5.1,0.8-6.7c0.5-2.3,0.8-4.4,2.4-6.3c1.2-1.6,2.8-3.2,4.3-4.4c2-1.2,3.9-2,6.3-2.4
+                        c1.8-0.3,5.1-0.7,7.1-0.8c3.5-0.2,15.8,0,15.8,0c0.8,0,1.6-0.8,1.6-1.6C80,39.2,79.2,38.4,78.4,38.4C78.4,38.4,78.4,38.4,78.4,38.4z
+                        "/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
             </div>
-        </section>
-
-        <footer class="sohamsahare-footer-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <h5>Get in touch</h5>
-                        <a href="mailto:sohamsahare123@gmail.com">
-                            <p>sohamsahare123@gmail.com</p>
-                        </a>
-                    </div>
-                    <div class="col-md-4">
-                        <h5>Location</h5>
-                        <p>Pune, India</p>
-                    </div>
-                    <div class="col-md-4">
-                        <ul class="sohamsahare-footer-social-link">
-                            <li><a href="https://github.com/soham-sahare" target="_blank"><i
-                                        class="ti-github"></i></a></li>
-                            <li><a href="https://www.linkedin.com/in/sohamsahare/" target="_blank"><i
-                                        class="ti-linkedin"></i></a></li>
-                            <li><a href="https://www.facebook.com/soham.sahare.9/" target="_blank"><i
-                                        class="ti-facebook"></i></a></li>
-                            <li><a href="https://www.instagram.com/_soham.sahare/" target="_blank"><i
-                                        class="ti-instagram"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-md-12">
-                        <p style="text-align: center;">Made with ❤️ by <a href="/contact">Soham Sahare</a></p>
-                    </div>
-                </div>
+          </div>
+        </div>
+      </div>
+      <div class="ss-mxd-section padding-pre-title">
+        <div class="ss-mxd-container">
+          <div class="ss-mxd-block">
+            <div class="ss-mxd-links-lines">
+              <% (socials || []).forEach(function(s){ %>
+              <div class="ss-mxd-links-lines__item">
+                <div class="ss-mxd-links-lines__divider anim-uni-in-up"></div>
+                <a class="ss-mxd-links-lines__link anim-uni-in-up" href="<%= s.url %>" target="_blank">
+                  <h6 class="ss-mxd-links-lines__title"><%= s.label %></h6>
+                  <div class="ss-mxd-links-lines__icon">
+                    <i class="ph ph-arrow-up-right"></i>
+                  </div>
+                </a>
+                <div class="ss-mxd-links-lines__divider anim-uni-in-up"></div>
+              </div>
+              <% }); %>
             </div>
-        </footer>
+          </div>
+        </div>
+      </div>
+    </main>
 
-        <!-- DEFAULT JS -->
-        <script type='text/javascript' src='assets/js/plugins/jquery-3.6.0.min.js'></script>
+    <%- include('partials/footer') %>
 
-        <script type='text/javascript' src='assets/js/plugins/owl.carousel.min.js'></script>
-        <script type='text/javascript' src='assets/js/plugins/jquery.magnific-popup.min.js'></script>
-        <script type='text/javascript' src='assets/js/plugins/jquery.easing.js'></script>
-        <script type='text/javascript' src='assets/js/plugins/smooth-scroll.min.js'></script>
-        <script type='text/javascript' src='assets/js/plugins/wow.js'></script>
+    <a href="#0" id="to-top" class="btn btn-to-top slide-up anim-no-delay">
+        <i class="ph ph-arrow-up"></i>
+    </a>
 
-        <!-- CUSTOM JS -->
-        <script type='text/javascript' src='assets/js/script.js'></script>
-
-    </body>
-
+    <script src="js/libs.min.js"></script>
+    <script src="js/app.min.js"></script>
+    
+    <script>
+      // Override the existing jQuery form handler
+      $(document).ready(function() {
+        // Remove the existing event handler
+        $('#contact-form').off('submit');
+        
+        // Add our new handler
+        $('#contact-form').on('submit', async function(e) {
+          e.preventDefault(); // Prevent default form submission
+          e.stopImmediatePropagation(); // Stop other handlers
+          
+          const submitButton = this.querySelector('button[type="submit"]');
+          const originalText = submitButton.querySelector('.btn-caption').textContent;
+          
+          // Show loading state
+          submitButton.querySelector('.btn-caption').textContent = 'Sending...';
+          submitButton.disabled = true;
+          
+          try {
+            // Use jQuery's serialize method to get URL-encoded data
+            const formData = $(this).serialize();
+            const response = await fetch('/contact', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+              },
+              body: formData
+            });
+            
+            const result = await response.json();
+            
+            if (result.success) {
+              $('.contact').find('.form').addClass('is-hidden');
+              $('.contact').find('.form__reply').addClass('is-visible');
+              
+            } else {
+              throw new Error(result.message || 'Form submission failed');
+            }
+          } catch (error) {
+            console.error('Form submission error:', error);
+            alert('Sorry, there was an error submitting your message. Please try again.');
+            
+            // Reset button state
+            submitButton.querySelector('.btn-caption').textContent = originalText;
+            submitButton.disabled = false;
+          }
+        });
+      });
+    </script>
+  </body>
 </html>

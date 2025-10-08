@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <head>
+    <title>Error 404 - sohamsahare</title>
+    <%- include('partials/head') %>
+  </head>
+  <body>
+    
+    <%- include('partials/header') %>
+    <main id="ss-mxd-page-content" class="ss-mxd-page-content">
+      <div class="ss-mxd-section padding-default" style="min-height:100vh;display:flex;align-items:center;justify-content:center; padding: 0;">
+        <div class="ss-mxd-container grid-container">
+          <div class="ss-mxd-block">
+            <div class="container-fluid px-0">
+              <div class="row gx-0 d-xl-flex justify-content-xl-center">
+                <div class="col-12 col-xl-8 ss-mxd-grid-item no-margin">
+                  <div class="ss-mxd-block__content">
+                    <div class="ss-mxd-block__manifest centered anim-uni-in-up">
+                        <h1>404</h1> 
+                       <p class="ss-mxd-manifest ss-mxd-manifest-l reveal-type">Page Not Found</p>
+                       <p class="" style="margin-top: 20px; color: #666;">
+                         Redirecting to home page in <span id="countdown">7</span> seconds...
+                       </p>
+                      <div class="ss-mxd-manifest__controls anim-uni-in-up">
+                        <div class="ss-mxd-btngroup centered">
+                          <a class="btn btn-anim btn-default btn-accent slide-right-up" href="/">
+                          <span class="btn-caption">Home</span>
+                          <i class="ph-bold ph-arrow-up-right"></i>
+                          </a>
+                          <a class="btn btn-anim btn-default btn-outline slide-down" target="_blank" href="/contact">
+                          <span class="btn-caption">Contact</span>
+                          <i class="ph-bold ph-arrow-up-right"></i>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      let countdown = 7;
+      const countdownElement = document.getElementById('countdown');
+      
+      const timer = setInterval(() => {
+        countdown--;
+        countdownElement.textContent = countdown;
+        
+        if (countdown <= 0) {
+          clearInterval(timer);
+          window.location.href = '/';
+        }
+      }, 1000);
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <head>
+    <title><%= project.title %> | Project - sohamsahare</title>
+    <%- include('partials/head') %>
+  </head>
+  <body>
+    <%- include('partials/loader') %>
+    <%- include('partials/navbar') %>
+    <%- include('partials/header') %>
+
+    
+    <main id="ss-mxd-page-content" class="ss-mxd-page-content inner-page-content">
+
+      
+      <div class="ss-mxd-section ss-mxd-section-inner-headline padding-default">
+        <div class="ss-mxd-container grid-container">
+        
+          
+          <div class="ss-mxd-block loading-wrap">
+            <div class="container-fluid px-0">
+              <div class="row gx-0">
+
+                
+                <div class="col-12 col-xl-2 ss-mxd-grid-item no-margin">
+                  <div class="ss-mxd-block__name name-project-link loading__fade">
+                    <a class="btn btn-anim btn-line-small btn-muted slide-right-up" href="#0">
+                      <span class="btn-caption"><%= project.title %></span>
+                      <i class="ph ph-arrow-up-right"></i>
+                    </a>
+                  </div>
+                </div>
+                
+
+                
+                <div class="col-12 col-xl-10 ss-mxd-grid-item no-margin">
+                  <div class="ss-mxd-block__content">
+                    <div class="ss-mxd-block__inner-headline loading__item">
+                      <h1 class="inner-headline__title"><%= project.title %></h1>
+                    </div>
+                  </div>
+                </div>
+                
+
+                
+                <div class="col-12"></div>
+                
+
+              </div>
+              <div class="row g-0">
+                <div class="col-12 col-xl-2"></div>
+
+                
+                <div class="col-12 col-xl-6 ss-mxd-grid-item no-margin">
+
+                  <div class="inner-headline__paragraph loading__item">
+                    <p><%= project.description %></p>
+                  </div>
+
+                  <div class="inner-headline__data">
+                    <div class="ss-mxd-data-list">
+                      <div class="container-fluid p-0">
+                        <div class="row g-0">
+                          <div class="col-12 col-md-6 col-xl-5 ss-mxd-data-list__column loading__item">
+                            <% if (project.github) { %>
+                              <div class="ss-mxd-data-list__item">
+                                <p class="ss-mxd-data-list__name">GitHub</p>
+                                <p class="ss-mxd-data-list__content">
+                                   <a class="link-small-underline" href="<%= project.github %>" target="_blank" rel="noopener">Repository <i class="ph-bold ph-arrow-up-right"></i></a>
+                                </p>
+                              </div>
+                              <% } %>
+                          </div>
+                          <div class="col-12 col-md-6 col-xl-5 ss-mxd-data-list__column loading__item">
+                            
+                            <% if (project.live) { %>
+                            <div class="ss-mxd-data-list__item">
+                              <p class="ss-mxd-data-list__name">Live</p>
+                              <p class="ss-mxd-data-list__content">
+                                <a class="link-small-underline" href="<%= project.live %>" target="_blank" rel="noopener">View site <i class="ph-bold ph-arrow-up-right"></i></a>
+                              </p>
+                            </div>
+                            <% } %>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div>
+                
+
+                
+                <div class="col-12 col-xl-4 ss-mxd-grid-item no-margin">
+                  <div class="inner-headline__tags loading__fade">
+                    <% 
+                      const tags = Array.isArray(project.tags) ? project.tags : (project.tags ? project.tags.split(',').map(t => t.trim()) : []);
+                      tags.forEach(tag => { 
+                    %>
+                      <span class="tag tag-default tag-outline-medium"><%= tag %></span>
+                    <% }); %>
+                  </div>
+                </div>
+              </div>
+              
+
+            </div>
+          </div>
+          
+
+        </div>
+      </div>
+      
+
+      
+      <div class="ss-mxd-section ss-mxd-project overflow-hidden">
+        <div class="ss-mxd-container grid-container">
+        
+          
+          <div class="ss-mxd-project__block pre-grid">
+            <div class="container-fluid px-0">
+              <div class="row gx-0">
+                <div class="col-12 col-xl-5 ss-mxd-grid-item no-margin">
+                  <div class="ss-mxd-project__subtitle">
+                    <h2 class="reveal-type anim-uni-in-up">Challenge</h2>
+                  </div>
+                </div>
+                <div class="col-12 col-xl-6 ss-mxd-grid-item no-margin">
+                  <div class="ss-mxd-project__content">
+                    <div class="ss-mxd-project__paragraph">
+                      <p class="t-large t-bright anim-uni-in-up"><%= project.challenge %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+
+          
+          <div class="ss-mxd-project__block no-margin">
+            <div class="ss-mxd-project-cards">
+              <div class="container-fluid px-0">
+                <div class="row gx-0">
+                  
+                  <% project.images.forEach((image, index) => { %>
+                    <% const animationClass = index % 4 === 0 ? 'anim-uni-scale-in-right' : 
+                                           index % 4 === 1 ? 'anim-uni-scale-in-left' : 
+                                           index % 4 === 2 ? 'anim-uni-scale-in-right' : 'anim-uni-scale-in-left'; %>
+                    <% const colClass = index % 4 === 0 || index % 4 === 3 ? 'col-12 col-xl-5' : 'col-12 col-xl-7'; %>
+                    <% const innerClass = index % 4 === 0 ? 'align-end bg-accent radius-m' : 
+                                        index % 4 === 1 ? 'align-end bg-base-tint radius-m' : 'bg-base-tint radius-m'; %>
+                    <div class="<%= colClass %> ss-mxd-project-cards__item ss-mxd-grid-item <%= animationClass %>">
+                      <div class="ss-mxd-project-cards__inner <%= innerClass %>">
+                        <img src="<%= image %>" alt="Project Preview">
+                      </div>
+                    </div>
+                  <% }); %>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+
+          
+          <div class="ss-mxd-project__block">
+            <div class="container-fluid px-0">
+              <div class="row gx-0">
+                <div class="col-12 col-xl-5 ss-mxd-grid-item no-margin">
+                  <div class="ss-mxd-project__subtitle">
+                    <h2 class="reveal-type anim-uni-in-up">Solution</h2>
+                  </div>
+                </div> 
+                <div class="col-12 col-xl-6 ss-mxd-grid-item no-margin">
+                  <div class="ss-mxd-project__content">
+                    <div class="ss-mxd-project__paragraph medium-text">
+                      <p class="anim-uni-in-up"><%= project.solution %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+
+          
+          <div class="ss-mxd-project__block no-margin">
+            <div class="ss-mxd-project__nav">
+              <div class="ss-mxd-project__divider anim-uni-in-up"></div>
+              <div class="container-fluid p-0">
+                <div class="row g-0">
+                  <div class="col-6 ss-mxd-project__navitem left ss-mxd-grid-item no-margin anim-uni-in-up">
+                    <a class="btn btn-anim btn-line-small btn-muted anim-no-delay slide-left" href="/projects/<%= project.prevProject.id %>">
+                      <i class="ph ph-arrow-left"></i>
+                      <span class="btn-caption">Prev</span>
+                    </a>
+                    <a class="ss-mxd-project__link anim-uni-in-up" href="/projects/<%= project.prevProject.id %>">
+                      <span><%= project.prevProject.title %></span>
+                    </a>
+                  </div>
+                  <div class="col-6 ss-mxd-project__navitem right ss-mxd-grid-item no-margin anim-uni-in-up">
+                    <a class="btn btn-anim btn-line-small btn-muted anim-no-delay slide-right" href="/projects/<%= project.nextProject.id %>">
+                      <span class="btn-caption">Next</span>
+                      <i class="ph ph-arrow-right"></i>
+                    </a>
+                    <a class="ss-mxd-project__link  anim-uni-in-up" href="/projects/<%= project.nextProject.id %>">
+                      <span><%= project.nextProject.title %></span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+
+        </div>
+      </div>
+      
+ 
+    </main>
+
+    <%- include('partials/footer') %>
+
+    <a href="#0" id="to-top" class="btn btn-to-top slide-up anim-no-delay">
+        <i class="ph ph-arrow-up"></i>
+    </a>
+
+    <script src="/js/libs.min.js"></script>
+    <script src="/js/app.min.js"></script>
+    
+  </body>
+</html>

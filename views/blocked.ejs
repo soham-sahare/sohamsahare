@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <head>
+    <title>Blocked - sohamsahare</title>
+    <%- include('partials/head') %>
+  </head>
+  <body>
+    
+    <%- include('partials/header') %>
+    <main id="ss-mxd-page-content" class="ss-mxd-page-content">
+      <div class="ss-mxd-section padding-default" style="min-height:100vh;display:flex;align-items:center;justify-content:center; padding: 0;">
+        <div class="ss-mxd-container grid-container">
+          <div class="ss-mxd-block">
+            <div class="container-fluid px-0">
+              <div class="row gx-0 d-xl-flex justify-content-xl-center">
+                <div class="col-12 col-xl-8 ss-mxd-grid-item no-margin">
+                  <div class="ss-mxd-block__content">
+                    <div class="ss-mxd-block__manifest centered anim-uni-in-up">
+                        <h1>Access blocked</h1>
+                       <p class="ss-mxd-manifest ss-mxd-manifest-l reveal-type">Some actions are disabled on this site. Redirecting in <span id="countdown">3</span>…</p>
+                      <div class="ss-mxd-manifest__controls anim-uni-in-up">
+                        <div class="ss-mxd-btngroup centered">
+                          <a class="btn btn-anim btn-default btn-accent slide-right-up" href="/">
+                          <span class="btn-caption">Home</span>
+                          <i class="ph-bold ph-arrow-up-right"></i>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+  </body>
+  <script>
+    (function(){
+      var seconds = 3;
+      var el = document.getElementById('countdown');
+      var timer = setInterval(function(){
+        seconds -= 1;
+        if (el) el.textContent = String(seconds);
+        if (seconds <= 0) {
+          clearInterval(timer);
+        }
+      }, 1000);
+      setTimeout(function(){
+        try { location.replace('/'); } catch (e) { location.href = '/'; }
+      }, 3000);
+    })();
+  </script>
+</html>
+
+

@@ -1,0 +1,326 @@
+{
+    "projects": [
+      {
+        "id": "kookes-cafe",
+        "title": "Kooke's Cafe",
+        "description": "Inspiring ideas, creative insights, and the latest in design and tech. Fueling innovation for your digital journey.",
+        "github": "https://github.com/sohamsahare/kookes-cafe",
+        "live": "https://kookes-cafe.example.com",
+        "tags": ["Web design", "UI/UX design", "Development", "Branding"],
+        "challenge": "Donec maximus lorem quam, a aliquam erat aliquam quis. Sed accumsan sagittis condimentum. Proin eu nulla. Nunc vel ligula tincidunt, fermentum velit ac, sodales eros. Vivamus ac leo in arcu accumsan condimentum. Nullam ac est quis dolor scelerisque interdum in at risus. Pellentesque mattis est vel maximus posuere. Integer tristique ipsum velit, vitae gravida purus laoreet.",
+        "solution": "Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque ut arcu pulvinar, rhoncus libero id, lobortis metus. Morbi tristique dolor sit amet turpis faucibus malesuada. Morbi non ipsum vel risus scelerisque sagittis nec a ipsum. Nulla odio neque, feugiat a arcu et, tristique cursus diam. Duis consectetur massa nibh, ut rhoncus nibh vestibulum in. Sed imperdiet metus sed arcu efficitur posuere.",
+        "images": [
+          "/img/works/1200x1200_prj-details-01.webp",
+          "/img/works/1400x1000_prj-details-01.webp",
+          "/img/works/1400x1000_prj-details-02.webp",
+          "/img/works/1200x1200_prj-details-02.webp"
+        ],
+        "prevProject": {
+          "id": "mobile-app-design",
+          "title": "Mobile app design"
+        },
+        "nextProject": {
+          "id": "ai-experiments",
+          "title": "AI experiments"
+        }
+      },
+      {
+        "id": "mobile-app-design",
+        "title": "Mobile App Design",
+        "description": "A comprehensive mobile application design focusing on user experience and modern interface patterns.",
+        "github": "https://github.com/sohamsahare/kookes-cafe",
+        "live": "https://kookes-cafe.example.com",
+        "tags": ["Mobile Design", "UI/UX", "Prototyping", "User Research"],
+        "challenge": "Creating an intuitive mobile interface that works seamlessly across different screen sizes and platforms while maintaining brand consistency and user engagement.",
+        "solution": "Developed a comprehensive design system with reusable components, conducted extensive user testing, and implemented modern design patterns that enhance usability and accessibility.",
+        "images": [
+          "/img/works/preview/1920x1080_prv-05.webp",
+          "/img/works/preview/1200x800_prv-05.webp",
+          "/img/works/preview/600x730_prv-05.webp"
+        ],
+        "prevProject": {
+          "id": "ai-experiments",
+          "title": "AI experiments"
+        },
+        "nextProject": {
+          "id": "kookes-cafe",
+          "title": "Kooke's Cafe"
+        }
+      },
+      {
+        "id": "ai-experiments",
+        "title": "AI Experiments",
+        "description": "Exploring the intersection of artificial intelligence and creative design through innovative experimental projects.",
+        "github": "https://github.com/sohamsahare/kookes-cafe",
+        "live": "https://kookes-cafe.example.com",
+        "tags": ["AI/ML", "Creative Coding", "Data Visualization", "Innovation"],
+        "challenge": "Integrating artificial intelligence capabilities into creative workflows while maintaining human-centered design principles and ensuring ethical AI practices.",
+        "solution": "Developed custom AI tools and interfaces that enhance creative processes, implemented machine learning models for design assistance, and created intuitive user interfaces for AI-powered features.",
+        "images": [
+          "/img/works/preview/1920x1080_prv-01.webp",
+          "/img/works/preview/1200x800_prv-01.webp",
+          "/img/works/preview/600x730_prv-01.webp"
+        ],
+        "prevProject": {
+          "id": "kookes-cafe",
+          "title": "Kooke's Cafe"
+        },
+        "nextProject": {
+          "id": "mobile-app-design",
+          "title": "Mobile app design"
+        }
+      },
+      {
+        "id": "ecommerce-platform",
+        "title": "E-commerce Platform",
+        "description": "A full-stack e-commerce solution with modern design and seamless user experience for online retail.",
+        "github": "https://github.com/sohamsahare/kookes-cafe",
+        "live": "https://kookes-cafe.example.com",
+        "tags": ["E-commerce", "Full-stack", "Payment Integration", "Responsive Design"],
+        "challenge": "Building a scalable e-commerce platform that handles high traffic, secure payments, and provides an excellent shopping experience across all devices.",
+        "solution": "Implemented a robust backend with secure payment processing, created responsive frontend components, and integrated advanced features like inventory management and analytics.",
+        "images": [
+          "/img/works/preview/1920x1080_prv-04.webp",
+          "/img/works/preview/1200x800_prv-04.webp",
+          "/img/works/preview/600x730_prv-04.webp"
+        ],
+        "prevProject": {
+          "id": "ai-experiments",
+          "title": "AI experiments"
+        },
+        "nextProject": {
+          "id": "portfolio-redesign",
+          "title": "Portfolio Redesign"
+        }
+      },
+      {
+        "id": "portfolio-redesign",
+        "title": "Portfolio Redesign",
+        "description": "Modern portfolio website showcasing creative work with interactive elements and smooth animations.",
+        "github": "https://github.com/sohamsahare/kookes-cafe",
+        "live": "https://kookes-cafe.example.com",
+        "tags": ["Portfolio", "Animation", "Interactive Design", "Creative"],
+        "challenge": "Creating a unique portfolio website that stands out while maintaining excellent performance and user experience across all devices.",
+        "solution": "Designed custom animations and interactions, implemented smooth scrolling and transitions, and created a content management system for easy updates.",
+        "images": [
+          "/img/works/preview/1920x1080_prv-04.webp",
+          "/img/works/preview/1200x800_prv-02.webp",
+          "/img/works/preview/600x730_prv-02.webp"
+        ],
+        "prevProject": {
+          "id": "ecommerce-platform",
+          "title": "E-commerce Platform"
+        },
+        "nextProject": {
+          "id": "kookes-cafe",
+          "title": "Kooke's Cafe"
+        }
+      },
+      {
+        "id": "portfolio-redeasdadssign",
+        "title": "Portfoliasdaso Redesign",
+        "description": "Modern portfolio website showcasing creative work with interactive elements and smooth animations.",
+        "github": "https://github.com/sohamsahare/kookes-cafe",
+        "live": "https://kookes-cafe.example.com",
+        "tags": ["Portfolio", "Animation", "Interactive Design", "Creative"],
+        "challenge": "Creating a unique portfolio website that stands out while maintaining excellent performance and user experience across all devices.",
+        "solution": "Designed custom animations and interactions, implemented smooth scrolling and transitions, and created a content management system for easy updates.",
+        "images": [
+          "/img/works/preview/1920x1080_prv-04.webp",
+          "/img/works/preview/1200x800_prv-02.webp",
+          "/img/works/preview/600x730_prv-02.webp"
+        ],
+        "prevProject": {
+          "id": "ecommerce-platform",
+          "title": "E-commerce Platform"
+        },
+        "nextProject": {
+          "id": "kookes-cafe",
+          "title": "Kooke's Cafe"
+        }
+      },
+      {
+        "id": "portfolasdaio-redasdesign",
+        "title": "Portfolio Reasddesign",
+        "description": "Modern portfolio website showcasing creative work with interactive elements and smooth animations.",
+        "github": "https://github.com/sohamsahare/kookes-cafe",
+        "live": "https://kookes-cafe.example.com",
+        "tags": ["Portfolio", "Animation", "Interactive Design", "Creative"],
+        "challenge": "Creating a unique portfolio website that stands out while maintaining excellent performance and user experience across all devices.",
+        "solution": "Designed custom animations and interactions, implemented smooth scrolling and transitions, and created a content management system for easy updates.",
+        "images": [
+          "/img/works/preview/1920x1080_prv-04.webp",
+          "/img/works/preview/1200x800_prv-02.webp",
+          "/img/works/preview/600x730_prv-02.webp"
+        ],
+        "prevProject": {
+          "id": "ecommerce-platform",
+          "title": "E-commerce Platform"
+        },
+        "nextProject": {
+          "id": "kookes-cafe",
+          "title": "Kooke's Cafe"
+        }
+      }
+    ],
+    "experiences": [
+      {
+        "id": "ltimindtree",
+        "role": "Data Engineer",
+        "company": "LTIMindtree",
+        "location": "Pune",
+        "period": "Jul 2022 - present",
+        "summary": "I created original images for a range of digital and printed products.",
+        "responsibilities": [
+          "Built and maintained data pipelines and ETL workflows",
+          "Optimized SQL queries and data models for analytics",
+          "Collaborated with cross-functional teams to deliver insights"
+        ],
+        "highlights": [
+          "Reduced pipeline runtime by 30%",
+          "Implemented monitoring and alerting for critical jobs"
+        ],
+        "links": {
+          "company": "https://www.ltimindtree.com/"
+        }
+      },
+      {
+        "id": "abhyast-in",
+        "role": "Web Developer (Intern)",
+        "company": "Abhyast.in",
+        "location": "Delhi (Remote)",
+        "period": "May 2020 - Apr 2022",
+        "summary": "My job was to create adverts, branding, signage and other media products.",
+        "responsibilities": [
+          "Developed and maintained frontend components",
+          "Integrated APIs and improved page performance"
+        ],
+        "links": {
+          "company": "https://www.abhyast.in/"
+        }
+      },
+      {
+        "id": "oneshot-ai",
+        "role": "Software Engineer (Intern)",
+        "company": "Oneshot.ai",
+        "location": "",
+        "period": "May 2021 - Jul 2021",
+        "summary": "I am actively involved in creating user interfaces for mobile apps and websites.",
+        "responsibilities": [
+          "Built UI components and prototypes",
+          "Worked closely with designers to refine UX"
+        ],
+        "links": {
+          "company": "https://www.oneshot.ai/"
+        }
+      },
+      {
+        "id": "vit",
+        "role": "Software Developer (Intern)",
+        "company": "Vidyalankar Institute of Technology",
+        "location": "Mumbai",
+        "period": "May 2020 - Apr 2022",
+        "summary": "My job was to create adverts, branding, signage and other media products.",
+        "responsibilities": [
+          "Developed internal tools and scripts",
+          "Supported deployment and documentation"
+        ],
+        "links": {
+          "company": "https://www.vit.edu.in/"
+        }
+      }
+    ],
+    "education": [
+      {
+        "id": "be",
+        "degree": "Bachelor of Engineering (B.E.)",
+        "field": "",
+        "institution": "Vidyalankar Institute of Technology",
+        "location": "Mumbai, India",
+        "period": "2018 - 2022",
+        "links": {
+          "institution": "https://vit.edu.in/"
+        }
+      },
+      {
+        "id": "hsc",
+        "degree": "Higher Secondary School Certificate (HSC)",
+        "field": "",
+        "institution": "Taywade Junior College",
+        "location": "Nagpur, India",
+        "period": "2016 - 2018",
+        "links": {
+          "institution": "https://taywadecollege.edu.in/"
+        }
+      },
+      {
+        "id": "ssc",
+        "degree": "Secondary School Certificate (SSC)",
+        "field": "",
+        "institution": "Tejswini Vidya Mandir",
+        "location": "Nagpur, India",
+        "period": "2006 - 2016",
+        "links": {
+          "institution": "https://www.tejswinividyamandir.com/"
+        }
+      }
+    ],
+    "socials": [
+      { "label": "LinkedIn", "url": "https://www.linkedin.com/in/sohamsahare/" },
+      { "label": "GitHub", "url": "https://github.com/soham-sahare" },
+      { "label": "Instagram", "url": "https://www.instagram.com/_soham.sahare/" },
+      { "label": "LeetCode", "url": "https://leetcode.com/soham_sahare/" },
+      { "label": "GeekForGeeks", "url": "http://geeksforgeeks.org/user/sohamsahare/" }
+    ],
+    "skills": [
+      "Python",
+      "Flask",
+      "Django",
+      "Java",
+      "Springboot",
+      "C++",
+      "React",
+      "JavaScript",
+      "TypeScript",
+      "Database (Oracle, PostgreSQL, MongoDB)",
+      "git",
+      "Kubernetes",
+      "OpenShift",
+      "DSA",
+      "NodeJS",
+      "OOP"
+    ],
+    "contact": {
+      "email": "me@sohamsahare.in",
+      "phone": "+91 775-605-9960",
+      "personalUrl": "https://www.linkedin.com/in/sohamsahare/",
+      "resumeUrl": "https://drive.google.com/file/d/1ZcNjP8RzmdJQsMnXI2P2kldiEcw6ElSu/view?usp=sharing"
+    },
+    "testimonials": [
+      {
+        "id": "testimonial-1",
+        "name": "John Lemon",
+        "position": "Brand Manager",
+        "company": "Instant Design",
+        "companyUrl": "#",
+        "avatar": "img/avatars/300x300_ava-03.webp",
+        "rating": 5,
+        "text": "Working with Alex was an absolute pleasure! He took the time to understand our business needs and translated them into a beautifully designed, user-friendly website.",
+        "projectUrl": "#0",
+        "image": "img/illustrations/1400x1400_values-01.webp"
+      },
+      {
+        "id": "testimonial-2", 
+        "name": "Alex Tomato",
+        "position": "Brand Manager",
+        "company": "Instant Design",
+        "companyUrl": "#",
+        "avatar": "img/avatars/300x300_ava-04.webp",
+        "rating": 5,
+        "text": "Amazing job on our website! Alex understood exactly what we needed and made it look great and easy to use.",
+        "projectUrl": "#0",
+        "image": "img/illustrations/1400x1400_values-02.webp"
+      }
+    ]
+}
+  

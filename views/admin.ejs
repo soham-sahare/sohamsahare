@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - sohamsahare</title>
+    <%- include('partials/head') %>
+    <style>
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .admin-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--st-muted);
+        }
+        .admin-header h1 {
+            font: normal 400 4rem/1.2 var(--_font-accent);
+            color: var(--t-bright);
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .admin-header p {
+            font: normal 400 1.8rem/1.6 var(--_font-default);
+            color: var(--t-bright);
+            opacity: 0.8;
+        }
+        .admin-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        .admin-nav-btn {
+            padding: 1rem 2rem;
+            background: var(--base);
+            color: var(--t-medium);
+            border: 1px solid var(--st-muted);
+            border-radius: var(--_radius-s);
+            cursor: pointer;
+            transition: all var(--_animspeed-medium) var(--_animbezier);
+            text-decoration: none;
+            display: inline-block;
+            font: normal 400 1.4rem/1.6 var(--_font-default);
+        }
+        .admin-nav-btn:hover {
+            background: #B19CD9;
+            color: var(--base-opp);
+            border-color: #B19CD9;
+            transform: translateY(-2px);
+        }
+        .admin-nav-btn.active {
+            background: #B19CD9;
+            color: var(--base-opp);
+            border-color: #B19CD9;
+        }
+        .admin-section {
+            display: none;
+            margin-bottom: 3rem;
+        }
+        .admin-section.active {
+            display: block;
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--st-muted);
+        }
+        .section-header h2 {
+            font: normal 400 2.4rem/1.2 var(--_font-accent);
+            color: var(--t-bright);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+        .add-btn {
+            background: #B19CD9;
+            color: var(--base-opp);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--_radius-s);
+            cursor: pointer;
+            transition: all var(--_animspeed-medium) var(--_animbezier);
+        }
+        .add-btn:hover {
+            background: #9B7ED8;
+            transform: translateY(-2px);
+        }
+        .item-card {
+            background: var(--base-tint);
+            padding: 2rem;
+            border-radius: var(--_radius-s);
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--st-muted);
+            transition: all var(--_animspeed-medium) var(--_animbezier);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .item-card:hover {
+            border-color: #B19CD9;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(177, 156, 217, 0.2);
+        }
+        .item-card h3 {
+            font: normal 400 2rem/1.2 var(--_font-accent);
+            color: var(--t-bright);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+        .item-card p {
+            font: normal 400 1.4rem/1.6 var(--_font-default);
+            color: var(--t-bright);
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+        .item-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .btn-edit, .btn-delete {
+            padding: 0.8rem 1.5rem;
+            border: 1px solid;
+            border-radius: var(--_radius-s);
+            cursor: pointer;
+            transition: all var(--_animspeed-medium) var(--_animbezier);
+            font: normal 400 1.2rem/1.6 var(--_font-default);
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-edit {
+            background: var(--base);
+            color: #B19CD9;
+            border-color: #B19CD9;
+        }
+        .btn-edit:hover {
+            background: #B19CD9;
+            color: var(--base-opp);
+            transform: translateY(-1px);
+        }
+        .btn-delete {
+            background: var(--base);
+            color: #dc3545;
+            border-color: #dc3545;
+        }
+        .btn-delete:hover {
+            background: #dc3545;
+            color: white;
+            transform: translateY(-1px);
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--t-bright);
+            font-size: 1.4rem;
+        }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--st-muted);
+            border-radius: var(--_radius-s);
+            background: var(--base-tint);
+            color: var(--t-bright);
+            font-family: inherit;
+            font-size: 1.4rem;
+            transition: all var(--_animspeed-medium) var(--_animbezier);
+        }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            border-color: #B19CD9;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(177, 156, 217, 0.2);
+        }
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--t-bright);
+            background: var(--base-tint);
+            border-radius: var(--_radius-m);
+            border: 2px solid #B19CD9;
+            box-shadow: 0 4px 20px rgba(177, 156, 217, 0.2);
+        }
+        .empty-state i {
+            font-size: 5rem;
+            margin-bottom: 2rem;
+            color: #B19CD9;
+            opacity: 0.9;
+        }
+        .empty-state h3 {
+            font: normal 400 2.4rem/1.2 var(--_font-accent);
+            color: var(--t-bright);
+            margin-bottom: 1rem;
+        }
+        .empty-state p {
+            font: normal 400 1.6rem/1.6 var(--_font-default);
+            color: var(--t-medium);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+        }
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background: var(--base);
+            padding: 2rem;
+            border-radius: var(--_radius-m);
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--st-muted);
+        }
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--t-muted);
+        }
+        .close-btn:hover {
+            color: var(--t-medium);
+        }
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 2rem;
+        }
+        .btn-save, .btn-cancel {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: var(--_radius-s);
+            cursor: pointer;
+            transition: all var(--_animspeed-medium) var(--_animbezier);
+        }
+        .btn-save {
+            background: #B19CD9;
+            color: var(--base-opp);
+        }
+        .btn-cancel {
+            background: var(--st-muted);
+            color: var(--t-medium);
+        }
+        .btn-save:hover, .btn-cancel:hover {
+            transform: translateY(-1px);
+        }
+        .alert {
+            padding: 1rem;
+            border-radius: var(--_radius-s);
+            margin-bottom: 1rem;
+            display: none;
+        }
+        .alert.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .alert.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .alert.show {
+            display: block;
+        }
+        @media (max-width: 768px) {
+            .admin-container {
+                padding: 1rem;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .admin-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- <%- include('partials/loader') %> -->
+    <!-- <%- include('partials/navbar') %> -->
+    <%- include('partials/header') %>
+
+    <main id="ss-mxd-page-content" class="ss-mxd-page-content inner-page-content">
+        <div class="admin-container">
+        <div class="admin-header">
+            <h1>Portfolio Admin Panel</h1>
+            <p>Manage your portfolio content</p>
+            <div style="margin-top: 2rem;">
+                <form method="POST" action="/admin/logout" style="display: inline;">
+                    <input type="hidden" name="csrfToken" value="<%= csrfToken %>">
+                    <button type="submit" style="background: #dc3545; color: white; border: none; padding: 0.8rem 1.5rem; border-radius: var(--_radius-s); cursor: pointer; font-size: 1.2rem; transition: all 0.3s ease;" onmouseover="this.style.background='#c82333'" onmouseout="this.style.background='#dc3545'">
+                        <i class="ph ph-sign-out"></i> Logout
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="admin-nav">
+            <button class="admin-nav-btn active" data-section="projects">Projects</button>
+            <button class="admin-nav-btn" data-section="experiences">Experiences</button>
+            <button class="admin-nav-btn" data-section="testimonials">Testimonials</button>
+            <button class="admin-nav-btn" data-section="education">Education</button>
+            <button class="admin-nav-btn" data-section="skills">Skills</button>
+            <button class="admin-nav-btn" data-section="socials">Social Links</button>
+            <button class="admin-nav-btn" data-section="contact">Contact Info</button>
+        </div>
+
+        <div id="alert-container"></div>
+
+        <!-- Projects Section -->
+        <div id="projects" class="admin-section active">
+            <div class="section-header">
+                <h2>Projects (<%= projects.length %>)</h2>
+                <button class="add-btn" onclick="openModal('project')">
+                    <i class="ph ph-plus"></i> Add Project
+                </button>
+            </div>
+            
+            <% if (projects.length === 0) { %>
+                <div class="empty-state">
+                    <i class="ph ph-folder-plus"></i>
+                    <h3>No Projects Yet</h3>
+                    <p>Projects will be available soon</p>
+                </div>
+            <% } else { %>
+                <% projects.forEach(function(project) { %>
+                    <div class="item-card">
+                        <h3><%= project.title %></h3>
+                        <p><%= project.description %></p>
+                        <% if (project.images && project.images.length > 0) { %>
+                            <div style="margin: 1rem 0;">
+                                <h4 style="color: var(--t-bright); margin-bottom: 0.5rem;">Images:</h4>
+                                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                                    <% project.images.forEach(function(image, index) { %>
+                                        <div style="position: relative; display: inline-block;">
+                                            <img src="<%= image %>" alt="Project image" style="width: 80px; height: 80px; object-fit: cover; border-radius: var(--_radius-s); border: 1px solid var(--st-muted);">
+                                            <button onclick="deleteProjectImage('<%= project.id %>', <%= index %>)" style="position: absolute; top: -5px; right: -5px; background: #dc3545; color: white; border: none; border-radius: 50%; width: 20px; height: 20px; font-size: 12px; cursor: pointer;" title="Delete image">
+                                                ×
+                                            </button>
+                                        </div>
+                                    <% }); %>
+                                </div>
+                            </div>
+                        <% } %>
+                        <div class="item-actions">
+                            <button class="btn-edit" onclick="editItem('project', '<%= project.id %>')">Edit</button>
+                            <button class="btn-delete" onclick="deleteItem('project', '<%= project.id %>')">Delete</button>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } %>
+        </div>
+
+        <!-- Experiences Section -->
+        <div id="experiences" class="admin-section">
+            <div class="section-header">
+                <h2>Experiences (<%= experiences.length %>)</h2>
+                <button class="add-btn" onclick="openModal('experience')">
+                    <i class="ph ph-plus"></i> Add Experience
+                </button>
+            </div>
+            
+            <% if (experiences.length === 0) { %>
+                <div class="empty-state">
+                    <i class="ph ph-briefcase"></i>
+                    <h3>No Experiences Yet</h3>
+                    <p>Work experiences will be available soon</p>
+                </div>
+            <% } else { %>
+                <% experiences.forEach(function(experience) { %>
+                    <div class="item-card">
+                        <h3><%= experience.role %> at <%= experience.company %></h3>
+                        <p><%= experience.period %> - <%= experience.location %></p>
+                        <p><%= experience.summary %></p>
+                        <div class="item-actions">
+                            <button class="btn-edit" onclick="editItem('experience', '<%= experience.id %>')">Edit</button>
+                            <button class="btn-delete" onclick="deleteItem('experience', '<%= experience.id %>')">Delete</button>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } %>
+        </div>
+
+        <!-- Testimonials Section -->
+        <div id="testimonials" class="admin-section">
+            <div class="section-header">
+                <h2>Testimonials (<%= testimonials.length %>)</h2>
+                <button class="add-btn" onclick="openModal('testimonial')">
+                    <i class="ph ph-plus"></i> Add Testimonial
+                </button>
+            </div>
+            
+            <% if (testimonials.length === 0) { %>
+                <div class="empty-state">
+                    <i class="ph ph-quotes"></i>
+                    <h3>No Testimonials Yet</h3>
+                    <p>Client testimonials will be available soon</p>
+                </div>
+            <% } else { %>
+                <% testimonials.forEach(function(testimonial) { %>
+                    <div class="item-card">
+                        <h3><%= testimonial.name %></h3>
+                        <p><%= testimonial.position %> at <%= testimonial.company %></p>
+                        <p><%= testimonial.text %></p>
+                        
+                        <% if (testimonial.avatar) { %>
+                            <div style="margin: 1rem 0;">
+                                <h4 style="color: var(--t-bright); margin-bottom: 0.5rem;">Avatar:</h4>
+                                <img src="<%= testimonial.avatar %>" alt="Avatar" style="width: 60px; height: 60px; object-fit: cover; border-radius: 50%; border: 1px solid var(--st-muted);">
+                            </div>
+                        <% } %>
+                        
+                        <% if (testimonial.image) { %>
+                            <div style="margin: 1rem 0;">
+                                <h4 style="color: var(--t-bright); margin-bottom: 0.5rem;">Image:</h4>
+                                <img src="<%= testimonial.image %>" alt="Testimonial image" style="width: 100px; height: 100px; object-fit: cover; border-radius: var(--_radius-s); border: 1px solid var(--st-muted);">
+                            </div>
+                        <% } %>
+                        
+                        <div class="item-actions">
+                            <button class="btn-edit" onclick="editItem('testimonial', '<%= testimonial.id %>')">Edit</button>
+                            <button class="btn-delete" onclick="deleteItem('testimonial', '<%= testimonial.id %>')">Delete</button>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } %>
+        </div>
+
+        <!-- Education Section -->
+        <div id="education" class="admin-section">
+            <div class="section-header">
+                <h2>Education (<%= education.length %>)</h2>
+                <button class="add-btn" onclick="openModal('education')">
+                    <i class="ph ph-plus"></i> Add Education
+                </button>
+            </div>
+            
+            <% if (education.length === 0) { %>
+                <div class="empty-state">
+                    <i class="ph ph-graduation-cap"></i>
+                    <h3>No Education Yet</h3>
+                    <p>Education details will be available soon</p>
+                </div>
+            <% } else { %>
+                <% education.forEach(function(edu) { %>
+                    <div class="item-card">
+                        <h3><%= edu.degree %></h3>
+                        <p><%= edu.institution %> - <%= edu.location %></p>
+                        <p><%= edu.period %></p>
+                        <div class="item-actions">
+                            <button class="btn-edit" onclick="editItem('education', '<%= edu.id %>')">Edit</button>
+                            <button class="btn-delete" onclick="deleteItem('education', '<%= edu.id %>')">Delete</button>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } %>
+        </div>
+
+        <!-- Skills Section -->
+        <div id="skills" class="admin-section">
+            <div class="section-header">
+                <h2>Skills (<%= skills.length %>)</h2>
+                <button class="add-btn" onclick="openModal('skills')">
+                    <i class="ph ph-plus"></i> Manage Skills
+                </button>
+            </div>
+            
+            <% if (skills.length === 0) { %>
+                <div class="empty-state">
+                    <i class="ph ph-code"></i>
+                    <h3>No Skills Yet</h3>
+                    <p>Skills will be available soon</p>
+                </div>
+            <% } else { %>
+                <div class="item-card">
+                    <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+                        <% skills.forEach(function(skill, index) { %>
+                            <div style="display: flex; align-items: center; gap: 0.5rem; background: #B19CD9; color: var(--base-opp); padding: 0.8rem 1.2rem; border-radius: var(--_radius-s); font-size: 1.2rem;">
+                                <span><%= skill %></span>
+                                <button onclick="removeSkill(<%= index %>)" style="background: none; border: none; color: var(--base-opp); cursor: pointer; font-size: 1.4rem; padding: 0; margin-left: 0.5rem;" title="Remove skill">
+                                    <i class="ph ph-x"></i>
+                                </button>
+                            </div>
+                        <% }); %>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+
+        <!-- Social Links Section -->
+        <div id="socials" class="admin-section">
+            <div class="section-header">
+                <h2>Social Links (<%= socials.length %>)</h2>
+                <button class="add-btn" onclick="openModal('social')">
+                    <i class="ph ph-plus"></i> Add Social Link
+                </button>
+            </div>
+            
+            <% if (socials.length === 0) { %>
+                <div class="empty-state">
+                    <i class="ph ph-share-network"></i>
+                    <h3>No Social Links Yet</h3>
+                    <p>Social media links will be available soon</p>
+                </div>
+            <% } else { %>
+                <% socials.forEach(function(social) { %>
+                    <div class="item-card">
+                        <h3><%= social.label %></h3>
+                        <p><a href="<%= social.url %>" target="_blank"><%= social.url %></a></p>
+                        <div class="item-actions">
+                            <button class="btn-edit" onclick="editItem('social', '<%= social.label %>')">Edit</button>
+                            <button class="btn-delete" onclick="deleteItem('social', '<%= social.label %>')">Delete</button>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } %>
+        </div>
+
+        <!-- Contact Info Section -->
+        <div id="contact" class="admin-section">
+            <div class="section-header">
+                <h2>Contact Information</h2>
+                <button class="add-btn" onclick="openModal('contact')">
+                    <i class="ph ph-edit"></i> Edit Contact
+                </button>
+            </div>
+            
+            <div class="item-card">
+                <h3>Email: <%= contact.email %></h3>
+                <p>Phone: <%= contact.phone %></p>
+                <p>Personal URL: <a href="<%= contact.personalUrl %>" target="_blank"><%= contact.personalUrl %></a></p>
+                <p>Resume URL: <a href="<%= contact.resumeUrl %>" target="_blank"><%= contact.resumeUrl %></a></p>
+                <div class="item-actions">
+                    <button class="btn-edit" onclick="editItem('contact', 'contact')">Edit Contact Info</button>
+                </div>
+            </div>
+        </div>
+        </div>
+    </main>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Add Item</h3>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <form id="modal-form">
+                <div id="form-content">
+                    <!-- Dynamic form content will be inserted here -->
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-save" onclick="saveItem()">Save</button>
+                    <button type="button" class="btn-cancel" onclick="closeModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let currentSection = localStorage.getItem('adminCurrentSection') || 'projects';
+        let currentType = '';
+        let currentId = '';
+
+        // Navigation will be handled in DOMContentLoaded
+
+        function showSection(section) {
+            document.querySelectorAll('.admin-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.admin-nav-btn').forEach(btn => btn.classList.remove('active'));
+            
+            const targetSection = document.getElementById(section);
+            if (targetSection) {
+                targetSection.classList.add('active');
+                currentSection = section;
+                // Save current section to localStorage
+                localStorage.setItem('adminCurrentSection', section);
+                
+                // Update nav button active state
+                const navBtn = document.querySelector(`[data-section="${section}"]`);
+                if (navBtn) {
+                    navBtn.classList.add('active');
+                }
+            } else {
+                console.error('Section not found:', section);
+            }
+        }
+
+        // Modal functions
+        function openModal(type, id = null, currentData = null) {
+            currentType = type;
+            currentId = id;
+            const modal = document.getElementById('modal');
+            const title = document.getElementById('modal-title');
+            const formContent = document.getElementById('form-content');
+            
+            title.textContent = id ? `Edit ${type.charAt(0).toUpperCase() + type.slice(1)}` : `Add ${type.charAt(0).toUpperCase() + type.slice(1)}`;
+            
+            // Generate form based on type
+            formContent.innerHTML = generateForm(type, id);
+            
+            // Populate form with current data if editing
+            if (currentData && id) {
+                // Wait for modal to be fully rendered and visible
+                setTimeout(() => {
+                    populateForm(currentData, type);
+                }, 500);
+            }
+            
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+        }
+
+        function populateForm(data, type) {
+            console.log('Populating form with data:', data);
+            console.log('Looking for description field...');
+            
+            // Populate all form fields with current data
+            Object.keys(data).forEach(key => {
+                const input = document.querySelector(`[name="${key}"]`);
+                if (input) {
+                    console.log(`Found input for ${key}:`, input);
+                    if (input.type === 'checkbox' || input.type === 'radio') {
+                        input.checked = data[key];
+                    } else if (input.type === 'file') {
+                        // Don't populate file inputs - they should remain empty for new uploads
+                        return;
+                    } else {
+                        input.value = data[key] || '';
+                        console.log(`Set ${key} to:`, data[key]);
+                    }
+                } else {
+                    console.log(`No input found for ${key}`);
+                }
+            });
+            
+            // Handle nested objects like links.company and links.institution
+            if (data.links && data.links.company) {
+                const companyUrlInput = document.querySelector('[name="links.company"]');
+                if (companyUrlInput) {
+                    console.log('Found company URL input:', companyUrlInput);
+                    companyUrlInput.value = data.links.company;
+                    console.log('Set company URL to:', data.links.company);
+                }
+            }
+            
+            if (data.links && data.links.institution) {
+                const institutionUrlInput = document.querySelector('[name="links.institution"]');
+                if (institutionUrlInput) {
+                    console.log('Found institution URL input:', institutionUrlInput);
+                    institutionUrlInput.value = data.links.institution;
+                    console.log('Set institution URL to:', data.links.institution);
+                }
+            }
+            
+            // Special check for description - use more specific selector
+            const descriptionInput = document.querySelector('textarea[name="description"]');
+            console.log('Description textarea found:', descriptionInput);
+            if (descriptionInput) {
+                console.log('Description input value before:', descriptionInput.value);
+                descriptionInput.value = data.description || '';
+                console.log('Description input value after:', descriptionInput.value);
+            } else {
+                console.log('No textarea with name="description" found');
+                // Try to find any description field
+                const allDescriptionFields = document.querySelectorAll('[name="description"]');
+                console.log('All description fields found:', allDescriptionFields);
+            }
+            
+            // Handle special cases for arrays
+            if (type === 'experience' && data.responsibilities) {
+                const responsibilitiesInput = document.querySelector('[name="responsibilities"]');
+                if (responsibilitiesInput && Array.isArray(data.responsibilities)) {
+                    responsibilitiesInput.value = data.responsibilities.join('\n');
+                }
+            }
+            
+            if (type === 'experience' && data.highlights) {
+                const highlightsInput = document.querySelector('[name="highlights"]');
+                if (highlightsInput && Array.isArray(data.highlights)) {
+                    highlightsInput.value = data.highlights.join('\n');
+                }
+            }
+            
+            if (type === 'project' && data.tags) {
+                const tagsInput = document.querySelector('[name="tags"]');
+                if (tagsInput) {
+                    if (Array.isArray(data.tags)) {
+                        tagsInput.value = data.tags.join(', ');
+                    } else {
+                        tagsInput.value = data.tags;
+                    }
+                }
+            }
+            
+            if (type === 'skills' && data.skills) {
+                const skillsInput = document.querySelector('[name="skills"]');
+                if (skillsInput && Array.isArray(data.skills)) {
+                    skillsInput.value = data.skills.join('\n');
+                }
+            }
+            
+        }
+
+        function generateForm(type, id) {
+            const forms = {
+                project: `
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea name="description" required></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>GitHub URL</label>
+                            <input type="url" name="github">
+                        </div>
+                        <div class="form-group">
+                            <label>Live URL</label>
+                            <input type="url" name="live">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Tags (comma-separated)</label>
+                        <input type="text" name="tags" placeholder="Web design, UI/UX, Development">
+                    </div>
+                    <div class="form-group">
+                        <label>Challenge</label>
+                        <textarea name="challenge"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Solution</label>
+                        <textarea name="solution"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Project Images</label>
+                        <input type="file" name="images" multiple accept="image/*" id="project-images">
+                        <small style="color: var(--t-muted); font-size: 1.2rem;">Select multiple images (max 10, 5MB each)</small>
+                    </div>
+                `,
+                experience: `
+                    <div class="form-group">
+                        <label>Role</label>
+                        <input type="text" name="role" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Company</label>
+                        <input type="text" name="company" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Location</label>
+                            <input type="text" name="location">
+                        </div>
+                        <div class="form-group">
+                            <label>Period</label>
+                            <input type="text" name="period" placeholder="Jan 2020 - Dec 2022">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Summary</label>
+                        <textarea name="summary" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Responsibilities (one per line)</label>
+                        <textarea name="responsibilities" placeholder="Responsibility 1&#10;Responsibility 2"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Highlights (one per line)</label>
+                        <textarea name="highlights" placeholder="Highlight 1&#10;Highlight 2"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Company URL</label>
+                        <input type="url" name="links.company">
+                    </div>
+                `,
+                testimonial: `
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" name="name" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Position</label>
+                            <input type="text" name="position" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Company</label>
+                            <input type="text" name="company" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Company URL</label>
+                        <input type="url" name="companyUrl">
+                    </div>
+                    <div class="form-group">
+                        <label>Avatar Image</label>
+                        <input type="file" name="avatar" accept="image/*" id="testimonial-avatar">
+                        <small style="color: var(--t-muted); font-size: 1.2rem;">Upload avatar image (max 5MB)</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Rating (1-5)</label>
+                        <select name="rating" required>
+                            <option value="1">1 Star</option>
+                            <option value="2">2 Stars</option>
+                            <option value="3">3 Stars</option>
+                            <option value="4">4 Stars</option>
+                            <option value="5" selected>5 Stars</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Testimonial Text</label>
+                        <textarea name="text" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Project URL</label>
+                        <input type="url" name="projectUrl">
+                    </div>
+                    <div class="form-group">
+                        <label>Testimonial Image</label>
+                        <input type="file" name="image" accept="image/*" id="testimonial-image">
+                        <small style="color: var(--t-muted); font-size: 1.2rem;">Upload testimonial image (max 5MB)</small>
+                    </div>
+                `,
+                education: `
+                    <div class="form-group">
+                        <label>Degree</label>
+                        <input type="text" name="degree" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Field</label>
+                        <input type="text" name="field">
+                    </div>
+                    <div class="form-group">
+                        <label>Institution</label>
+                        <input type="text" name="institution" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Location</label>
+                        <input type="text" name="location" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Period</label>
+                        <input type="text" name="period" placeholder="2018 - 2022" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Institution URL</label>
+                        <input type="url" name="links.institution">
+                    </div>
+                `,
+                social: `
+                    <div class="form-group">
+                        <label>Label</label>
+                        <input type="text" name="label" required>
+                    </div>
+                    <div class="form-group">
+                        <label>URL</label>
+                        <input type="url" name="url" required>
+                    </div>
+                `,
+                contact: `
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="text" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Personal URL</label>
+                        <input type="url" name="personalUrl" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Resume URL</label>
+                        <input type="url" name="resumeUrl" required>
+                    </div>
+                `,
+                skills: `
+                    <div class="form-group">
+                        <label>Skills (one per line)</label>
+                        <textarea name="skills" placeholder="Python&#10;JavaScript&#10;React"></textarea>
+                    </div>
+                `
+            };
+
+            return forms[type] || '';
+        }
+
+        function saveItem() {
+            const form = document.getElementById('modal-form');
+            const formData = new FormData(form);
+            
+            // Handle file uploads for projects and testimonials
+            if (currentType === 'project' || currentType === 'testimonial') {
+                const url = currentId ? 
+                    `/admin/${currentType}s/${currentId}` : 
+                    `/admin/${currentType}s`;
+                const method = currentId ? 'PUT' : 'POST';
+
+                fetch(url, {
+                    method: method,
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(result => {
+                    if (result.success) {
+                        showAlert(result.message, 'success');
+                        closeModal();
+                        // Stay on current tab instead of reloading
+                        setTimeout(() => {
+                            showSection(currentSection);
+                        }, 500);
+                    } else {
+                        showAlert(result.message, 'error');
+                    }
+                })
+                .catch(error => {
+                    showAlert('Error: ' + error.message, 'error');
+                });
+                return;
+            }
+
+            // Handle other data types (non-file uploads)
+            const data = Object.fromEntries(formData.entries());
+
+            // Handle arrays
+            if (data.responsibilities) {
+                data.responsibilities = data.responsibilities.split('\n').filter(r => r.trim());
+            }
+            if (data.highlights) {
+                data.highlights = data.highlights.split('\n').filter(h => h.trim());
+            }
+            if (data.tags) {
+                data.tags = data.tags.split(',').map(t => t.trim()).filter(t => t);
+            }
+            if (data.skills) {
+                data.skills = data.skills.split('\n').filter(s => s.trim());
+            }
+
+            const url = currentId ? 
+                `/admin/${currentType}s/${currentId}` : 
+                `/admin/${currentType}s`;
+            const method = currentId ? 'PUT' : 'POST';
+
+            fetch(url, {
+                method: method,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    showAlert(result.message, 'success');
+                    closeModal();
+                    // Stay on current tab instead of reloading
+                    setTimeout(() => {
+                        showSection(currentSection);
+                    }, 500);
+                } else {
+                    showAlert(result.message, 'error');
+                }
+            })
+            .catch(error => {
+                showAlert('Error: ' + error.message, 'error');
+            });
+        }
+
+        function editItem(type, id) {
+            // Get the current data from the page
+            let currentData = null;
+            
+            if (type === 'project') {
+                const projects = <%- JSON.stringify(projects) %>;
+                currentData = projects.find(p => p.id === id);
+            } else if (type === 'experience') {
+                const experiences = <%- JSON.stringify(experiences) %>;
+                currentData = experiences.find(e => e.id === id);
+            } else if (type === 'testimonial') {
+                const testimonials = <%- JSON.stringify(testimonials) %>;
+                currentData = testimonials.find(t => t.id === id);
+            } else if (type === 'education') {
+                const education = <%- JSON.stringify(education) %>;
+                currentData = education.find(e => e.id === id);
+            } else if (type === 'social') {
+                const socials = <%- JSON.stringify(socials) %>;
+                currentData = socials.find(s => s.label === id);
+            } else if (type === 'contact') {
+                const contact = <%- JSON.stringify(contact) %>;
+                currentData = contact;
+            }
+            
+            if (currentData) {
+                openModal(type, id, currentData);
+            } else {
+                showAlert('Item not found', 'error');
+            }
+        }
+
+        function deleteItem(type, id) {
+            if (confirm('Are you sure you want to delete this item?')) {
+                // Store current section before deletion
+                const currentTab = currentSection;
+                
+                fetch(`/admin/${type}s/${id}`, {
+                    method: 'DELETE'
+                })
+                .then(response => response.json())
+                .then(result => {
+                    if (result.success) {
+                        showAlert(result.message, 'success');
+                        // Remove the item from the DOM instead of reloading
+                        const itemCard = event.target.closest('.item-card');
+                        if (itemCard) {
+                            itemCard.style.opacity = '0';
+                            itemCard.style.transform = 'translateY(-20px)';
+                            setTimeout(() => {
+                                itemCard.remove();
+                                // Update section header count
+                                updateSectionCount(type);
+                                // Stay on the current tab
+                                showSection(currentTab);
+                            }, 300);
+                        }
+                    } else {
+                        showAlert(result.message, 'error');
+                    }
+                })
+                .catch(error => {
+                    showAlert('Error: ' + error.message, 'error');
+                });
+            }
+        }
+
+        function updateSectionCount(type) {
+            // Handle special case for skills
+            const sectionId = type === 'skill' ? 'skills' : type + 's';
+            const section = document.getElementById(sectionId);
+            const header = section.querySelector('.section-header h2');
+            if (header) {
+                const currentCount = section.querySelectorAll('.item-card').length;
+                const displayName = type === 'skill' ? 'Skills' : type.charAt(0).toUpperCase() + type.slice(1) + 's';
+                header.textContent = `${displayName} (${currentCount})`;
+            }
+        }
+
+        function removeSkill(index) {
+            if (confirm('Are you sure you want to remove this skill?')) {
+                // Get current skills from the page
+                const skills = <%- JSON.stringify(skills) %>;
+                const updatedSkills = skills.filter((_, i) => i !== index);
+                
+                // Update the skills via API
+                fetch('/admin/skills', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ skills: updatedSkills })
+                })
+                .then(response => response.json())
+                .then(result => {
+                    if (result.success) {
+                        showAlert(result.message, 'success');
+                        setTimeout(() => {
+                            showSection(currentSection);
+                        }, 500);
+                    } else {
+                        showAlert(result.message, 'error');
+                    }
+                })
+                .catch(error => {
+                    showAlert('Error: ' + error.message, 'error');
+                });
+            }
+        }
+
+        function deleteProjectImage(projectId, imageIndex) {
+            if (confirm('Are you sure you want to delete this image?')) {
+                fetch(`/admin/projects/${projectId}/images/${imageIndex}`, {
+                    method: 'DELETE',
+                    credentials: 'same-origin',
+                    headers: {
+                        'X-Requested-With': 'fetch'
+                    }
+                })
+                .then(response => response.json())
+                .then(result => {
+                    if (result.success) {
+                        showAlert(result.message, 'success');
+                        setTimeout(() => {
+                            showSection(currentSection);
+                        }, 500);
+                    } else {
+                        showAlert(result.message, 'error');
+                    }
+                })
+                .catch(error => {
+                    showAlert('Error: ' + error.message, 'error');
+                });
+            }
+        }
+
+        function showAlert(message, type) {
+            const alertContainer = document.getElementById('alert-container');
+            const alert = document.createElement('div');
+            alert.className = `alert ${type} show`;
+            alert.textContent = message;
+            alertContainer.appendChild(alert);
+
+            setTimeout(() => {
+                alert.remove();
+            }, 3000);
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('modal').addEventListener('click', (e) => {
+            if (e.target.id === 'modal') {
+                closeModal();
+            }
+        });
+
+        // Initialize navigation on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show the saved section or default to projects
+            showSection(currentSection);
+            
+            // Add click handlers to all nav buttons
+            document.querySelectorAll('.admin-nav-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const section = btn.dataset.section;
+                    console.log('Switching to section:', section);
+                    showSection(section);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+ 

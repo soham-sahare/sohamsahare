@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title><%= experience.role %> - <%= experience.company %> - sohamsahare</title>
+    <%- include('partials/head') %>
+  </head>
+  <body>
+    <%- include('partials/loader') %>
+    <%- include('partials/navbar') %>
+    <%- include('partials/header') %>
+
+    <main id="ss-mxd-page-content" class="ss-mxd-page-content inner-page-content">
+
+      <div class="ss-mxd-section ss-mxd-section-inner-headline padding-default">
+        <div class="ss-mxd-container grid-container">
+          <div class="ss-mxd-block loading-wrap">
+            <div class="container-fluid px-0">
+              <div class="row gx-0">
+                <div class="col-12 col-xl-2 ss-mxd-grid-item no-margin">
+                  <div class="ss-mxd-block__name name-project-link loading__fade">
+                    <a class="btn btn-anim btn-line-small btn-muted slide-right-up" href="#0">
+                      <span class="btn-caption"><%= experience.company %></span>
+                      <i class="ph ph-arrow-up-right"></i>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="col-12 col-xl-10 ss-mxd-grid-item no-margin">
+                  <div class="ss-mxd-block__content">
+                    <div class="ss-mxd-block__inner-headline loading__item">
+                      <h1 class="inner-headline__title"><%= experience.role %> at <%= experience.company %></h1>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12"></div>
+
+                <div class="row g-0">
+                  <div class="col-12 col-xl-2"></div>
+                  <div class="col-12 col-xl-6 ss-mxd-grid-item no-margin">
+                    <div class="inner-headline__paragraph loading__item">
+                      <p><%= experience.summary %></p>
+                    </div>
+                    <div class="inner-headline__data">
+                      <div class="ss-mxd-data-list">
+                        <div class="container-fluid p-0">
+                          <div class="row g-0">
+                            <div class="col-12 col-md-6 col-xl-5 ss-mxd-data-list__column loading__item">
+                              <div class="ss-mxd-data-list__item">
+                                <p class="ss-mxd-data-list__name">Company</p>
+                                <p class="ss-mxd-data-list__content"><%= experience.company %></p>
+                              </div>
+                              <div class="ss-mxd-data-list__item">
+                                <p class="ss-mxd-data-list__name">Location</p>
+                                <p class="ss-mxd-data-list__content"><%= experience.location %></p>
+                              </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl-5 ss-mxd-data-list__column loading__item">
+                              <div class="ss-mxd-data-list__item">
+                                <p class="ss-mxd-data-list__name">Period</p>
+                                <p class="ss-mxd-data-list__content"><%= experience.period %></p>
+                              </div>
+                              <% if (experience.links && experience.links.company) { %>
+                              <div class="ss-mxd-data-list__item">
+                                <p class="ss-mxd-data-list__name">Company Link</p>
+                                <p class="ss-mxd-data-list__content"><a class="link-small-underline" href="<%= experience.links.company %>" target="_blank" rel="noopener">Visit</a></p>
+                              </div>
+                              <% } %>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12 col-xl-4 ss-mxd-grid-item no-margin">
+                    <div class="inner-headline__tags loading__fade">
+                      <% if (experience.responsibilities && experience.responsibilities.length) { %>
+                        <% experience.responsibilities.forEach(item => { %>
+                          <span class="tag tag-default tag-outline-medium"><%= item %></span>
+                        <% }); %>
+                      <% } %>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ss-mxd-section ss-mxd-project">
+        <div class="ss-mxd-container grid-container">
+          <div class="ss-mxd-project__block">
+            <div class="container-fluid px-0">
+              <div class="row gx-0">
+                <div class="col-12 col-xl-5 ss-mxd-grid-item no-margin">
+                  <div class="ss-mxd-project__subtitle">
+                    <h2 class="reveal-type anim-uni-in-up">Highlights</h2>
+                  </div>
+                </div>
+                <div class="col-12 col-xl-6 ss-mxd-grid-item no-margin">
+                  <div class="ss-mxd-project__content">
+                    <div class="ss-mxd-project__paragraph medium-text">
+                      <% if (experience.highlights && experience.highlights.length) { %>
+                        <ul>
+                          <% experience.highlights.forEach(h => { %>
+                            <li><%= h %></li>
+                          <% }); %>
+                        </ul>
+                      <% } else { %>
+                        <p class="anim-uni-in-up">Key achievements and outcomes from this role.</p>
+                      <% } %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <%- include('partials/footer') %>
+
+    <a href="#0" id="to-top" class="btn btn-to-top slide-up anim-no-delay">
+      <i class="ph ph-arrow-up"></i>
+    </a>
+
+    <script src="/js/libs.min.js"></script>
+    <script src="/js/app.min.js"></script>
+  </body>
+</html>
