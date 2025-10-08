@@ -1,8 +1,0 @@
-User-agent: *
-
-Allow: /
-Allow: /about
-Allow: /contact
-Allow: /projects
-
-Sitemap: https://sohamsahare.vercel.app/sitemap.xml
